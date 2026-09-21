@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
-
 public class Account {
+
 
     private String name;
     private int accountNumber;
@@ -55,7 +53,34 @@ public class Account {
         return this.accountStatus;
     }
 
-}
+    public void withdraw(double withdrawMoney) {
+
+        if (accountStatus != AccountStatus.ACTIVE) {
+            System.out.println("You can't deposit from this account because this account is " + accountStatus.name());
+        } else if (withdrawMoney <= 0) {
+            IO.println("Invalid withdrawal amount");
+        } else if (withdrawMoney > balance) {
+            IO.println("Withdrawal amount is larger than balance");
+        } else {
+            balance -= withdrawMoney;
+        }
+    }
+
+    public void deposit(double depositMoney){
+        if(AccountStatus.ACTIVE != accountStatus){
+            System.out.println("You can't deposit from this account because this account is " + accountStatus.name());
+        } else if(depositMoney <= 0){
+            IO.println("Invalid deposit amount");
+        } else {
+         balance += depositMoney;
+        }
+
+    }
+
+
+    }
+
+
 
 
 
