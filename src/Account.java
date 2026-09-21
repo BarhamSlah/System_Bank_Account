@@ -8,20 +8,15 @@ public class Account {
     private AccountType accountType;
     private AccountStatus accountStatus;
 
-    public  Account(String name, double balance, AccountType accountType, AccountStatus accountStatus){
+    public  Account(String name, AccountType accountType, AccountStatus accountStatus){
         this.name = name;
         this.accountNumber = nextAccountNumber++;
-        this.balance = balance;
         this.accountType = accountType;
         this.accountStatus = accountStatus;
     }
 
     void setName(String name){
         this.name = name;
-    }
-
-    void setBalance(double balance){
-        this.balance = balance;
     }
 
     void setAccountType(AccountType accountType){
@@ -56,7 +51,7 @@ public class Account {
     public void withdraw(double withdrawMoney) {
 
         if (accountStatus != AccountStatus.ACTIVE) {
-            System.out.println("You can't deposit from this account because this account is " + accountStatus.name());
+            System.out.println("You can't withdraw from this account because this account is " + accountStatus.name());
         } else if (withdrawMoney <= 0) {
             IO.println("Invalid withdrawal amount");
         } else if (withdrawMoney > balance) {
@@ -78,9 +73,25 @@ public class Account {
     }
 
 
+    public  void transfer(Account receiver , double amount ) {
+
+        if (amount <= 0 ) {
+             IO.println("Invalid transmit input");
+        } else if(amount > this.balance){
+            IO.println("Sender account has not enough money ");
+        } else if(AccountStatus.ACTIVE != receiver.accountStatus || AccountStatus.ACTIVE != this.accountStatus){
+            IO.println("Sender Account is " + this.accountStatus + " & Receiver account is " + receiver.accountStatus );
+        }  else {
+            receiver.balance += amount;
+            this.balance -= amount;
+            IO.println("Transfer successful!");
+        }
+
+
     }
 
 
+}
 
 
 
