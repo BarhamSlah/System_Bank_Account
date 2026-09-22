@@ -1,15 +1,14 @@
 ArrayList<Account> accounts = new ArrayList();
+Scanner scanner = new Scanner(System.in);
 
 void main(String[] args){
 
-  accounts.add(account1);
-  accounts.add(account2);
-  findAccount(accounts , 2);
 
+
+  createAccount();
+  displayInfo();
 }
 
-Account account1 = new Account("Jack",  AccountType.CHECKING , AccountStatus.ACTIVE );
-Account account2 = new Account("James",  AccountType.CHECKING , AccountStatus.ACTIVE );
 
 
 public void displayInfo() {
@@ -27,7 +26,7 @@ public void displayInfo() {
 }
 
 
-public static void findAccount(ArrayList<Account> accounts ,  int accountNumber){
+public void findAccount(int accountNumber){
 
     for(Account account : accounts){
 
@@ -45,3 +44,21 @@ public static void findAccount(ArrayList<Account> accounts ,  int accountNumber)
     IO.println("Account not founded");
 
 }
+
+public  void createAccount() {
+
+    IO.println("enter your name ");
+    String name = scanner.nextLine();
+
+
+
+    Account newAccount = new Account(
+            name,
+            AccountType.CHECKING,
+            AccountStatus.ACTIVE
+    );
+
+    accounts.add(newAccount);
+}
+
+
