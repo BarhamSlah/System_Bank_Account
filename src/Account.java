@@ -2,7 +2,7 @@ public class Account {
 
 
     private String name;
-    private int accountNumber;
+    private final int accountNumber;
     private static int nextAccountNumber = 1;
     private double balance;
     private AccountType accountType;
@@ -73,7 +73,7 @@ public class Account {
     }
 
 
-    public  void transfer(Account receiver , double amount ) {
+    public void transfer(Account receiver , double amount ) {
 
         if (amount <= 0 ) {
              IO.println("Invalid transmit input");
@@ -87,14 +87,7 @@ public class Account {
             IO.println("Transfer successful!");
         }
 
-
     }
 
 
 }
-
-
-
-
-
-
