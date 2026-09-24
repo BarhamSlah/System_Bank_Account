@@ -73,7 +73,7 @@ public class Account {
     }
 
 
-    public void transfer(Account receiver , double amount ) {
+    public void transfer(Account receiver , double amount) {
 
         if (amount <= 0 ) {
             IO.println("Invalid transfer input");

@@ -1,13 +1,42 @@
 ArrayList<Account> accounts = new ArrayList();
 Scanner scanner = new Scanner(System.in);
 
-void main(String[] args){
+void main() {
 
 
+    IO.println("""
+            ===== BANK SYSTEM =====
+            1. Create Account
+            2. Display All Accounts
+            3. Find Account
+            4. Deposit
+            5. Withdraw
+            6. Transfer
+            7. Exit
+            """);
 
-}
+    System.out.print("Choose an option: ");
+    int choice = scanner.nextInt();
+    scanner.nextLine();
 
-public void displayInfo() {
+    if (choice == 1) {
+         createAccount();
+    } else if (choice == 2 && accounts.isEmpty()) {
+       IO.println("No accounts available to display.");
+    } else if (choice == 2) {
+        displayAccounts();
+    }  else if(choice == 3 && accounts.isEmpty()){
+        IO.println("We don't have account to find");
+    }else if(choice == 3){
+        IO.print("Enter the account number you want to find: ");
+        int number = scanner.nextInt();
+        findAccount(number);
+    }
+
+    }
+
+
+public void displayAccounts() {
 
     for (Account account : accounts){
         IO.println("Account Number: " + account.getAccountNumber());
