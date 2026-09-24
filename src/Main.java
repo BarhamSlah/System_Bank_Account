@@ -3,8 +3,8 @@ Scanner scanner = new Scanner(System.in);
 
 void main(String[] args){
 
-    createAccount();
-    displayInfo();
+
+
 }
 
 public void displayInfo() {
@@ -35,7 +35,7 @@ public void findAccount(int accountNumber){
 
     }
 
-    IO.println("Account not founded");
+    IO.println("Account not found");
 
 }
 
@@ -49,6 +49,13 @@ public void createAccount() {
     int choice = scanner.nextInt();
     scanner.nextLine();
 
+
+    while (choice != 1 && choice != 2) {
+        System.out.println("Invalid choice! Enter 1 or 2: ");
+        choice = scanner.nextInt();
+        scanner.nextLine();
+    }
+
     AccountType accountType;
     if (choice == 1) {
         accountType = AccountType.CHECKING;
@@ -56,11 +63,6 @@ public void createAccount() {
         accountType = AccountType.SAVING;
     }
 
-    while (choice != 1 && choice != 2) {
-        System.out.println("Invalid choice! Enter 1 or 2: ");
-        choice = scanner.nextInt();
-        scanner.nextLine();
-    }
 
     Account newAccount = new Account(
             name,
@@ -69,4 +71,8 @@ public void createAccount() {
     );
 
     accounts.add(newAccount);
+}
+
+public void exit(){
+    IO.println("Thank you for choosing our bank system!");
 }

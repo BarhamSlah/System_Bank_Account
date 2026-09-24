@@ -76,12 +76,12 @@ public class Account {
     public void transfer(Account receiver , double amount ) {
 
         if (amount <= 0 ) {
-             IO.println("Invalid transmit input");
-        } else if(amount > this.balance){
-            IO.println("Sender account has not enough money ");
+            IO.println("Invalid transfer input");
         } else if(AccountStatus.ACTIVE != receiver.accountStatus || AccountStatus.ACTIVE != this.accountStatus){
             IO.println("Sender Account is " + this.accountStatus + " & Receiver account is " + receiver.accountStatus );
-        }  else {
+        } else if(amount > this.balance) {
+            IO.println("Sender account has not enough money ");
+        } else {
             receiver.balance += amount;
             this.balance -= amount;
             IO.println("Transfer successful!");
