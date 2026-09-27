@@ -52,6 +52,24 @@ void main() {
         }
 
 
+        else if (choice == 5 && accounts.isEmpty()) {
+              IO.println("We don't have account to withdraw");
+        } else if (choice == 5) {
+              IO.print("Pass your account number ");
+              int numberOfAccount = scanner.nextInt();
+
+            for (Account account : accounts) {
+                if (account.getAccountNumber() == numberOfAccount) {
+                    IO.print("Enter the deposit withdraw: ");
+                    double amount = scanner.nextDouble();
+                    account.withdraw(amount);
+
+                }
+            }
+
+        }
+
+
     }
 }
 
