@@ -24,7 +24,7 @@ void main(String[] args) {
         choice = scanner.nextInt();
         scanner.nextLine();
 
-        if(choice <= 0 || choice < 8){
+        if(choice <= 0 || choice > 7){
             IO.println("Invalid choice. Please select 1-7.");
         }else if (choice == 1) {
             createAccount();
@@ -94,12 +94,13 @@ void main(String[] args) {
                 }
             }
 
-                if (sender != null && receiver != null) {
-                    sender.transfer(receiver, amount);
-                } else {
-                    IO.println("Sender or receiver not found.");
-
-                }
+            if (sender == null || receiver == null) {
+                IO.println("Sender or receiver not found.");
+            } else if (sender == receiver) {
+                IO.println("Cannot transfer to the same account.");
+            } else {
+                sender.transfer(receiver, amount);
+            }
 
 
         }
