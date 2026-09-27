@@ -100,6 +100,9 @@ void main(String[] args) {
                 }
 
 
+        }else if(choice == 7){
+            exit();
+
         }
 
 
