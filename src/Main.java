@@ -2,13 +2,15 @@ ArrayList<Account> accounts = new ArrayList();
 Scanner scanner = new Scanner(System.in);
 
 void main(String[] args) {
-    int choice = 0;
-    while (choice != 7) {
 
+    int choice = 0;
+
+    while (choice != 7) {
 
 
         IO.println("""
                 ===== BANK SYSTEM =====
+                Enter number from 1 to 7
                 1. Create Account
                 2. Display All Accounts
                 3. Find Account
@@ -22,7 +24,9 @@ void main(String[] args) {
         choice = scanner.nextInt();
         scanner.nextLine();
 
-        if (choice == 1) {
+        if(choice <= 0 || choice < 8){
+            IO.println("Invalid choice. Please select 1-7.");
+        }else if (choice == 1) {
             createAccount();
         } else if (choice == 2 && accounts.isEmpty()) {
             IO.println("No accounts available to display.");
@@ -49,9 +53,7 @@ void main(String[] args) {
                 }
             }
 
-        }
-
-        else if (choice == 5 && accounts.isEmpty()) {
+        } else if (choice == 5 && accounts.isEmpty()) {
               IO.println("We don't have account to withdraw");
         } else if (choice == 5) {
               IO.print("Pass your account number ");
@@ -66,7 +68,7 @@ void main(String[] args) {
 
             }
 
-        }else if(choice == 6){
+        } else if(choice == 6){
 
 
             IO.print("Enter the sender account number: ");
@@ -103,13 +105,10 @@ void main(String[] args) {
         }
 
         }
+
     exit();
 
-
     }
-
-
-
 
 public void displayAccounts() {
 
