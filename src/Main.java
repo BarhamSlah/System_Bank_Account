@@ -2,38 +2,58 @@ ArrayList<Account> accounts = new ArrayList();
 Scanner scanner = new Scanner(System.in);
 
 void main() {
+    int choice = 0;
+    while (choice != 7) {
+
+        createAccount();
+
+        IO.println("""
+                ===== BANK SYSTEM =====
+                1. Create Account
+                2. Display All Accounts
+                3. Find Account
+                4. Deposit
+                5. Withdraw
+                6. Transfer
+                7. Exit
+                """);
+
+        System.out.print("Choose an option: ");
+         choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice == 1) {
+            createAccount();
+        } else if (choice == 2 && accounts.isEmpty()) {
+            IO.println("No accounts available to display.");
+        } else if (choice == 2) {
+            displayAccounts();
+        } else if (choice == 3 && accounts.isEmpty()) {
+            IO.println("We don't have account to find");
+        } else if (choice == 3) {
+            IO.print("Enter the account number you want to find: ");
+            int number = scanner.nextInt();
+            findAccount(number);
+        } else if (choice == 4 && accounts.isEmpty()) {
+            IO.println("We don't have account to deposit");
+        } else if (choice == 4) {
+            IO.print("Pass your account number ");
+            int numberOfAccount = scanner.nextInt();
+
+            for (Account account : accounts) {
+                if (account.getAccountNumber() == numberOfAccount) {
+                    IO.print("Enter the deposit amount: ");
+                    double amount = scanner.nextDouble();
+                    account.deposit(amount);
+
+                }
+            }
+
+        }
 
 
-    IO.println("""
-            ===== BANK SYSTEM =====
-            1. Create Account
-            2. Display All Accounts
-            3. Find Account
-            4. Deposit
-            5. Withdraw
-            6. Transfer
-            7. Exit
-            """);
-
-    System.out.print("Choose an option: ");
-    int choice = scanner.nextInt();
-    scanner.nextLine();
-
-    if (choice == 1) {
-         createAccount();
-    } else if (choice == 2 && accounts.isEmpty()) {
-       IO.println("No accounts available to display.");
-    } else if (choice == 2) {
-        displayAccounts();
-    }  else if(choice == 3 && accounts.isEmpty()){
-        IO.println("We don't have account to find");
-    }else if(choice == 3){
-        IO.print("Enter the account number you want to find: ");
-        int number = scanner.nextInt();
-        findAccount(number);
     }
-
-    }
+}
 
 
 public void displayAccounts() {

@@ -58,6 +58,7 @@ public class Account {
             IO.println("Withdrawal amount is larger than balance");
         } else {
             balance -= withdrawMoney;
+            IO.println("Balance  = " + balance + "$");
         }
     }
 
@@ -68,6 +69,7 @@ public class Account {
             IO.println("Invalid deposit amount");
         } else {
          balance += depositMoney;
+         IO.println("Balance  = " + balance + "$");
         }
 
     }
