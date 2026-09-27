@@ -1,11 +1,11 @@
 ArrayList<Account> accounts = new ArrayList();
 Scanner scanner = new Scanner(System.in);
 
-void main() {
+void main(String[] args) {
     int choice = 0;
     while (choice != 7) {
 
-        createAccount();
+
 
         IO.println("""
                 ===== BANK SYSTEM =====
@@ -19,7 +19,7 @@ void main() {
                 """);
 
         System.out.print("Choose an option: ");
-         choice = scanner.nextInt();
+        choice = scanner.nextInt();
         scanner.nextLine();
 
         if (choice == 1) {
@@ -51,7 +51,6 @@ void main() {
 
         }
 
-
         else if (choice == 5 && accounts.isEmpty()) {
               IO.println("We don't have account to withdraw");
         } else if (choice == 5) {
@@ -63,9 +62,43 @@ void main() {
                     IO.print("Enter the deposit withdraw: ");
                     double amount = scanner.nextDouble();
                     account.withdraw(amount);
+                }
 
+            }
+
+        }else if(choice == 6){
+
+
+            IO.print("Enter the sender account number: ");
+            int senderNumber = scanner.nextInt();
+
+            IO.print("Enter the receiver account number: ");
+            int receiverNumber = scanner.nextInt();
+
+            IO.print("Enter the transfer amount: ");
+            double amount = scanner.nextDouble();
+
+
+            Account sender= null;
+            Account receiver= null;
+
+            for(Account account : accounts) {
+                if (receiverNumber == account.getAccountNumber()) {
+                    receiver = account;
+                }
+
+                if (senderNumber == account.getAccountNumber()) {
+                    sender = account;
                 }
             }
+
+                if (sender != null && receiver != null) {
+                    sender.transfer(receiver, amount);
+                } else {
+                    IO.println("Sender or receiver not found.");
+
+                }
+
 
         }
 
