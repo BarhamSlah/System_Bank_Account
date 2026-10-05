@@ -126,13 +126,8 @@ void main() {
             }
 
 
-        }
-
-
-
-
-
-
+         }
+        
         }
 
     exit();
@@ -181,7 +176,6 @@ public void createAccount() {
     int choice = scanner.nextInt();
     scanner.nextLine();
 
-
     while (choice != 1 && choice != 2) {
         System.out.println("Invalid choice! Enter 1 or 2: ");
         choice = scanner.nextInt();
@@ -194,7 +188,6 @@ public void createAccount() {
     } else {
         accountType = AccountType.SAVING;
     }
-
 
     Account newAccount = new Account(
             name,
