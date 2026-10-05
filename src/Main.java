@@ -82,17 +82,21 @@ void main(String[] args) {
               IO.print("Pass your account number ");
               int numberOfAccount = scanner.nextInt();
 
+              boolean accountFound = false;
 
             for (Account account : accounts) {
                 if (account.getAccountNumber() == numberOfAccount) {
-                    IO.print("Enter the deposit withdraw: ");
+                    IO.print("Enter the withdrawal amount: ");
                     double amount = scanner.nextDouble();
                     account.withdraw(amount);
-                }
-                else if(account.getAccountNumber() != numberOfAccount){
-                    IO.println("This account does not exist");
+                    accountFound = true;
+                    break;
                 }
 
+            }
+
+            if(!accountFound){
+                IO.println("Account not found");
             }
 
         } else if(choice == 6){
