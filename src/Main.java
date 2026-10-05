@@ -1,4 +1,4 @@
-ArrayList<Account> accounts = new ArrayList();
+ArrayList<Account> accounts = new ArrayList<>();
 Scanner scanner = new Scanner(System.in);
 
 void main(String[] args) {
@@ -40,18 +40,41 @@ void main(String[] args) {
             findAccount(number);
         } else if (choice == 4 && accounts.isEmpty()) {
             IO.println("We don't have account to deposit");
-        } else if (choice == 4) {
+        }
+
+
+
+
+
+        else if (choice == 4) {
+
             IO.print("Pass your account number ");
             int numberOfAccount = scanner.nextInt();
 
+            boolean accountFound = false;
+
+
             for (Account account : accounts) {
+
                 if (account.getAccountNumber() == numberOfAccount) {
+
                     IO.print("Enter the deposit amount: ");
                     double amount = scanner.nextDouble();
+                    accountFound = true;
                     account.deposit(amount);
-
+                    break;
                 }
             }
+
+            if (!accountFound){
+                IO.println("Account not found");
+            }
+
+
+
+
+
+
 
         } else if (choice == 5 && accounts.isEmpty()) {
               IO.println("We don't have account to withdraw");
@@ -59,11 +82,15 @@ void main(String[] args) {
               IO.print("Pass your account number ");
               int numberOfAccount = scanner.nextInt();
 
+
             for (Account account : accounts) {
                 if (account.getAccountNumber() == numberOfAccount) {
                     IO.print("Enter the deposit withdraw: ");
                     double amount = scanner.nextDouble();
                     account.withdraw(amount);
+                }
+                else if(account.getAccountNumber() != numberOfAccount){
+                    IO.println("This account does not exist");
                 }
 
             }
