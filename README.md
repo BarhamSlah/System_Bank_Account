@@ -147,7 +147,7 @@ Each new account receives an automatically generated account number.
 
 ### Requirements
 
-* Java Development Kit (JDK)
+* Java Development Kit (JDK 25 or later)
 * IntelliJ IDEA or another Java IDE
 
 ### Steps
