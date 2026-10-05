@@ -1,0 +1,18 @@
+# IntelliJ IDEA
+
+.idea/
+*.iml
+
+# Java compiled files
+
+*.class
+
+# Build directories
+
+out/
+target/
+
+# OS generated files
+
+.DS_Store
+Thumbs.db
