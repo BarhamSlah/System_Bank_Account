@@ -1,7 +1,7 @@
 ArrayList<Account> accounts = new ArrayList<>();
 Scanner scanner = new Scanner(System.in);
 
-void main(String[] args) {
+void main() {
 
     int choice = 0;
 
@@ -40,13 +40,7 @@ void main(String[] args) {
             findAccount(number);
         } else if (choice == 4 && accounts.isEmpty()) {
             IO.println("We don't have account to deposit");
-        }
-
-
-
-
-
-        else if (choice == 4) {
+        } else if (choice == 4) {
 
             IO.print("Pass your account number ");
             int numberOfAccount = scanner.nextInt();
@@ -69,12 +63,6 @@ void main(String[] args) {
             if (!accountFound){
                 IO.println("Account not found");
             }
-
-
-
-
-
-
 
         } else if (choice == 5 && accounts.isEmpty()) {
               IO.println("We don't have account to withdraw");
@@ -99,8 +87,12 @@ void main(String[] args) {
                 IO.println("Account not found");
             }
 
-        } else if(choice == 6){
+        } else if (choice == 6 && accounts.isEmpty()) {
+            IO.println("We don't have accounts to transfer");
 
+        }
+
+        else if(choice == 6){
 
             IO.print("Enter the sender account number: ");
             int senderNumber = scanner.nextInt();
@@ -135,6 +127,11 @@ void main(String[] args) {
 
 
         }
+
+
+
+
+
 
         }
 
